@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
+                echo 'Setup...'
                 script {
                     sh 'python3 --version'
                     sh 'pip --version'
@@ -35,7 +36,7 @@ pipeline {
    }
    stage('Deploy') {
      steps {
-       echo 'Deploying...'
+       echo 'Preprod Deploying'
      }
    }
   }
