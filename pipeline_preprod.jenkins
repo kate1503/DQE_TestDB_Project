@@ -1,10 +1,8 @@
 pipeline {
     agent any
-
     stages {
         stage('Setup') {
             steps {
-                echo 'Setup...'
                 script {
                     sh 'python3 --version'
                     sh 'pip --version'
@@ -13,30 +11,29 @@ pipeline {
                         . venv/bin/activate
                         pip install -r requirements.txt
                     '''
-                    }
+                }
+            }
         }
-      }
-      stage('Build') {
-        steps {
-          echo 'Building...'
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
         }
-      }
 
 
-   stage('Test') {
-     steps {
-         script {
-              sh '''
-                  . venv/bin/activate
-                  pytest
-              '''
-         }
-
-     }
-   }
-   stage('Deploy') {
-     steps {
-       echo 'Preprod Deploying'
+        stage('Test') {
+            steps {
+                script {
+                    sh '''
+                    . venv/bin/activate
+                    pytest
+                    '''
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
      }
    }
   }
