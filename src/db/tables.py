@@ -1,5 +1,5 @@
 from sqlalchemy import Column
-from sqlalchemy import Integer, NVARCHAR, SmallInteger, BINARY
+from sqlalchemy import Integer, NVARCHAR, SmallInteger, BINARY, DATETIME, NCHAR
 from dbconnection import Model
 
 
@@ -21,3 +21,12 @@ class Document(Model):
     Title = Column(NVARCHAR)
     DocumentSummary = Column(NVARCHAR)
     Status = Column(SmallInteger)
+
+
+class UnitMeasure(Model):
+    __tablename__ = 'UnitMeasure'
+    __table_args__ = {'schema': 'Production'}
+
+    UnitMeasureCode = Column(NCHAR, primary_key=True)
+    Name = Column(NVARCHAR)
+    ModifiedDate = Column(DATETIME)
